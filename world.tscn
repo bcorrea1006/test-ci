@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://brs5wgw6gwksi"]
+
+[ext_resource type="Texture2D" uid="uid://b7eoe22001w0r" path="res://icon.svg" id="1_2l8nn"]
+[ext_resource type="Script" path="res://static_body_2d.gd" id="1_jac1g"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="2_820wm"]
+[ext_resource type="AudioStream" uid="uid://c27al6srtui5h" path="res://wave-song-v1.2.2.wav" id="4_h8fjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thywi"]
+size = Vector2(52, 52)
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("1_jac1g")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(40, 8)
+polygon = PackedVector2Array(-40, -8, -16, -8, 128, 144, 216, 400, -8, 400, -8, 568, 344, 568, 344, 440, 600, 376, 600, 440, 736, 440, 736, 560, 1048, 568, 1048, -8, 1176, -8, 1168, 680, -40, 680)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+color = Color(0.229506, 0.732865, 0.489945, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(88, 528)
+script = ExtResource("2_820wm")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_2l8nn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_thywi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h8fjj")
+autoplay = true
