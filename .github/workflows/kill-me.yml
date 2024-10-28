@@ -15,5 +15,5 @@ jobs:
         with:
           godot_version: 4.3
           gut_params: -gdir=res://tests/unit
-      - run:
+      - script:
           godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" -gtest=res://test/unit/test_example.gd -glog=1
