@@ -21,5 +21,4 @@ jobs:
           lfs: true
       - name: Run unit tests
         run: |
-          cd $PROJECT_PATH
           godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" -gtest=res://test/unit/test_example.gd -glog=1
