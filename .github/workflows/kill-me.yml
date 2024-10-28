@@ -1,4 +1,3 @@
-
 name: "godot gut test"
 on: push
 
@@ -9,11 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
       - name: Docker test
         uses: ceceppa/godot-gut-ci@main
         with:
-          godot_version: 4.3
-          gut_params: -gdir=res://tests/unit
-      - run:
-          godot -s addons/gut/gut_cmdln.gd -d -gtest=res://test/unit/test_example.gd -glog=1
+          godot_version: 3.2.1 # uses godot 3.2.1
+          gut_params: -gdir=res://tests -gsuffix=.test.gd -gprefix=
